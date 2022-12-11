@@ -106,9 +106,24 @@ public:
         
         if(word1.size()!=word2.size()) return false;
         
+        //TWO CONDITIONS ARE NEEDED TO CHECK
+        
+        //1 IS NEED TO CHECK ALL THE UNIQUE CHARACTERS ARE SAME
+        
+        // S1= A B C
+        // S2= A B C
+        
+        //2 IS THAT THE FRQUENCY OF ELEMENTS ARE SAME IN BOTH WORDS
+        
+        //F1=1 2 3 3
+        //F2=1 2 3 3
+        
+        
+        //STORING THE UNIQUE CHARACTER OF BOTH THE STRING
         vector<bool> v1(26,false);
         vector<bool> v2(26,false);
         
+        //STORING FREQUENCY OF THE CHARACTERS
         vector<int> v3(26,0);
         vector<int> v4(26,0);
         
@@ -127,11 +142,15 @@ public:
               v2[i-'a']=true;
         }
         
+        //CHECK BOTH STRING HAVE SAME UNIQUE ELEMENTS
+        
         if(v1!=v2) return false;
         
         
         sort(v3.begin(),v3.end());
         sort(v4.begin(),v4.end());
+        
+        //CHECK BOTH THE VECTORS ARE SAME OF FREQUENCY OF CHARACTERS
         
         return v3==v4;
     }
