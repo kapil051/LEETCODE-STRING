@@ -1,0 +1,61 @@
+We define the usage of capitals in a word to be right when one of the following cases holds:
+
+All letters in this word are capitals, like "USA".
+All letters in this word are not capitals, like "leetcode".
+Only the first letter in this word is capital, like "Google".
+Given a string word, return true if the usage of capitals in it is right.
+
+ 
+
+Example 1:
+
+Input: word = "USA"
+Output: true
+Example 2:
+
+Input: word = "FlaG"
+Output: false
+ 
+
+Constraints:
+
+1 <= word.length <= 100
+word consists of lowercase and uppercase English letters.
+
+***********************************************************************************O(N)************************************************************************
+
+class Solution {
+public:
+    bool detectCapitalUse(string word) {
+        
+        bool first_char_is_cap=false;
+        bool second_char_is_cap=false;
+        
+        if(word[0]>=65&&word[0]<=90) first_char_is_cap=true;
+        
+        if(word[1]>=65&&word[1]<=90) second_char_is_cap=true;
+        
+        if(word.size()==2&&first_char_is_cap==false&&second_char_is_cap==true) return false;
+        
+        for(int i=2;i<word.size();i++){
+            
+            if(word[i]>=65&&word[i]<=90){
+                
+                if(first_char_is_cap==false) return false;
+                
+                if(second_char_is_cap==false) return false;
+             
+            }
+            
+            if(word[i]>=97&&word[i]<=122){
+                
+                if(second_char_is_cap==true) return false;
+                
+            }
+            
+            
+        }
+        
+        return true;
+    }
+};
